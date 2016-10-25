@@ -1,0 +1,5 @@
+alias eric Eric Ren <zren@suse.com>
+
+alias ocfs2-devel ocfs2-devel <ocfs2-devel@oss.oracle.com>
+alias ocfs2-tools ocfs2-tools-devel <ocfs2-tools-devel@oss.oracle.com>
+alias ocfs2-test ocfs2-test-devel <ocfs2-test-devel@oss.oracle.com>

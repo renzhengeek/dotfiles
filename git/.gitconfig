@@ -1,0 +1,23 @@
+[user]
+   name = Eric Ren
+   email = zren@suse.com
+[sendemail]
+   smtpencryption = tls
+   smtpuser = zren
+   smtpserver = imap.novell.com
+   smtpserverport = 25
+   suppresscc = all
+   smtppass = @@SMTPPASS@@
+   confirm = always
+
+   aliasesFile = ~/.mutt/alias
+   aliasFileType = mutt 
+[commit]
+	template = ~/.gitmessage.txt
+[color]
+	ui = true
+[push]
+	default = simple
+
+[diff "default"]
+   xfuncname = "^[[:alpha:]$_].*[^:]$"

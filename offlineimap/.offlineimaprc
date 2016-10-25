@@ -1,0 +1,34 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+accounts = suse
+ui = quiet
+
+[Account suse]
+localrepository = Local
+remoterepository = Remote
+autorefresh = 2
+
+[Repository Local]
+type = Maildir
+localfolders = ~/.MailCache
+
+[Repository Remote]
+type = IMAP
+remotehost = @@MAIL SERVER@@
+remoteuser = zren
+remotepass = @@MAILSERVER PASSWD@@
+ssl = yes
+cert_fingerprint = 7c8cc6e753a4c06fae63562988da543f6315569a
+keepalive = 50
+holdconnectionopen = yes
+folderfilter = lambda folder: folder not in ['Cabinet','Trash','Work In Progress', 'Notes', 'Messages', 'Items', 'Deleted', 'suse_could', 'sle-pek', 'Tasklist']
+
+[mbnames]
+enabled = yes
+#filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
