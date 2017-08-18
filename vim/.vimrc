@@ -81,12 +81,11 @@ set formatoptions=tcrqn "自动格式化
 set autoindent "继承前一行的缩进方式，特别适用于多行注释
 set smartindent "为C程序提供自动缩进
 set cindent "使用C样式的缩进
-set tabstop=8 " 制表符为4
-set softtabstop=8 "统一缩进为4
+set tabstop=8 " 制表符为8
 set shiftwidth=8 "input settings
-set smarttab
-set backspace=2
-set expandtab "expand tab to spaces
+set noexpandtab
+"set smarttab
+"set backspace=2
 set cinoptions=:0,g0,t0,(0,Ws,m1
 "search settings
 set hlsearch
@@ -198,6 +197,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/spell.vim'
 " autosess
 Plugin 'powerman/vim-plugin-autosess'
+" PaperColor
+Plugin 'NLKNguyen/papercolor-theme'
 
 ""have not try yet
 "Plugin 'tagexplorer.vim'
@@ -261,9 +262,9 @@ let g:ycm_show_diagnostics_ui = 0
 "
 "syntastic
 "
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -291,3 +292,22 @@ let g:autosess_dir = '~/.vim/autosess/'
 cnoremap <C-O> source ~/.session_
 cnoremap <C-S> mksession! ~/.session_
 nnoremap <silent> <C-S><C-S> :mksession! ~/.session_ <CR>
+
+"
+" file header setting
+"
+autocmd BufNewFile *.h so ~/tmp/header.txt
+autocmd BufNewFile *.c so ~/tmp/header.txt
+autocmd BufNewFile *.cc so ~/tmp/header.txt
+autocmd BufNewFile *.cpp so ~/tmp/header.txt
+autocmd BufWritePre,FileWritePre *.c execute "normal ma"
+autocmd BufWritePost,FileWritePost *.c execute "normal 'a'"
+
+"
+" setting for PaperColor
+"
+"set t_Co=256   " This is may or may not needed.
+
+"set background=dark
+"colorscheme PaperColor
+

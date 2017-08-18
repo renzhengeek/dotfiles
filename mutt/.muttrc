@@ -1,21 +1,21 @@
 # Eric's muttrc file
 
-set realname = "@@MUTT_REALNAME@@"
-set from = "@@MUTT_FROM@@"
+set realname = "Eric Ren"
+set from = "Eric Ren <zren@sue.com>"
 
+# IMAP: offlineimap
 set mbox_type = Maildir
 set folder = ~/.MailCache
-set spoolfile = "+INBOX"
-set record = "+/Sent"
-set postponed = "+/Work In Progress"
 #source ~/.mutt/mailboxes
-#mailboxes =INBOX =ha-team =ha-devel =ocfs2 =ocfs2-tools =ceph-users =ceph-devel =ceph-cn =ocfs2-test =research =kernel =Sent
-mailboxes `echo ~/.MailCache/*`
+mailboxes =to-me =lvm2 =lvm2-devel =lvm2-bugs =INBOX =ha-team =ha-devel =dm-devel =linux-block =cluster-suse =cluster-lab =Sent =kernel
+set spoolfile = "+/INBOX"
+set record = "+/Sent"
+set postponed = "+/Drafts"
 
 # the smtp sendmail setting
 set sendmail = "/usr/bin/msmtp"
 set use_from = yes
-set from = @@EMAIL@@
+set from = zren@suse.com
 set envelope_from = yes
 
 # address book, contacts
@@ -26,10 +26,10 @@ source $alias_file
 set quit=ask-yes
 set include
 set indent_str="> " 
-#my_hdr From: @@EMAIL@@
+#my_hdr From: Eric Ren <zren@suse.com>
 #score "~N" +4
-score "~f @@X@@" +2
-score "~s @@X@@" +4
+score "~f zzhou@suse.com" +2
+score "~s ocfs2" +4
 score "~D" -5
 #score "~O" +1
 set pager_stop
@@ -39,10 +39,10 @@ set edit_headers=no
 set pager_index_lines=4
 
 #for mailist
-subscribe ocfs2-devel@oss.oracle.com
-subscribe ocfs2-tools-devel@oss.oracle.com
-subscribe ocfs2-test-devel@oss.oracle.com
-subscribe ocfs2-users@oss.oracle.com
+#subscribe ocfs2-devel@oss.oracle.com
+#subscribe ocfs2-tools-devel@oss.oracle.com
+#subscribe ocfs2-test-devel@oss.oracle.com
+#subscribe ocfs2-users@oss.oracle.com
 
 
 #mail view, edit, forward setting
@@ -60,6 +60,9 @@ set attribution = "On %d, %n wrote: "
 set sidebar_visible=yes
 set sidebar_width=24
 set sidebar_delim='|'
+set sidebar_sort=yes
+#set sidebar_sort_method=unsorted
+color sidebar_new brightblue black
 
 #color
 source ~/.mutt/colors.linux
@@ -79,23 +82,26 @@ bind	index	gg	first-entry
 bind	index	G	last-entry
 
 #use <quote-char> to add space.
-macro index,pager gi "<change-folder>=INBOX<enter><first-entry>" "Go to inbox"
-macro index,pager gs "<change-folder>=Sent<enter>" "Go to sent"
-macro index,pager gb "<change-folder>=bugzilla<enter><first-entry>" "Go to bugzilla"
-macro index,pager gr "<change-folder>=report<enter>" "Go to report"
+macro index,pager \Ci "<change-folder>=INBOX<enter><first-entry>" "Go to inbox"
+macro index,pager \Ca "<change-folder>=to-me<enter><first-entry>" "Go to me"
+macro index,pager \Cd "<change-folder>=dm-devel<enter><first-entry>" "Go to dm"
+macro index,pager \Cl "<change-folder>=lvm2-devel<enter><first-entry>" "Go to lvm2-devel"
+macro index,pager \Cs "<change-folder>=Sent<enter>" "Go to sent"
+macro index,pager \Cb "<change-folder>=ha-bugs<enter><first-entry>" "Go to bugzilla"
 
-#macro index (t '~/mailtogit/mail-to-mbox^M'  "Dumps tagged patches into ~/incoming/*.mbox"
-#macro index (a '~/mailtogit/git-apply-incomming^M'  "git am ~/incoming/*.mbox"
-#macro index (g '~/mailtogit/git-apply^M'  "git am tagged patches"
-#macro index (r 'rm -f ~/incoming/*.mbox^M'  "Nukes all ~/incoming/"
-#macro index (l 'ls -ltr ~/incoming/^M'  "ls -l ~/incoming/"        
 #macro index ,t '~/mailtogit/mail-to-mbox^M'  "Dumps currently viewed patch into ~/incoming/*.mbox"
 #macro index ,g '~/mailtogit/git-apply^M' "git am currently viewed patch"
 #macro index ,a '~/mailtogit/git-abort^M' "git am --abort"          
 #macro index ,r '~/mailtogit/git-reset^M' "git-reset --hard origin" 
 
-
 macro index,pager b '<enter-command>toggle sidebar_visible<enter>'
-bind index,pager <esc>p sidebar-prev #alt+p select previous folder
-bind index,pager <esc>n sidebar-next #alt+n select next folder
-bind index,pager <esc>o sidebar-open #alt+o open folder
+#alt+p select previous folder
+bind index,pager <esc>p sidebar-prev
+#alt+n select next folder
+bind index,pager <esc>n sidebar-next
+#alt+o open folder
+bind index,pager <esc>o sidebar-open 
+
+macro index A \
+	"<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+	"mark all new as read"
