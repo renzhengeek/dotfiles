@@ -1,10 +1,10 @@
 [user]
    name = Eric Ren
-   email = zren@suse.com
+   email = *
 [sendemail]
    smtpencryption = tls
    smtpuser = zren
-   smtpserver = imap.novell.com
+   smtpserver = *
    smtpserverport = 25
    suppresscc = all
    smtppass = @@SMTPPASS@@
