@@ -113,6 +113,13 @@
 (add-hook 'rust-mode-hook 'eglot-ensure)
 ;;;; RUST END
 
+;;;; C/C++
+;; install ccls
+; https://snapcraft.io/install/ccls/centos
+; sudo ln -s /snap/ccls/80/bin/ccls /usr/local/bin/ccls
+(add-hook 'c-mode-hook 'eglot-ensure)
+;;;; C/C++ END
+
 ;;;; windows
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
@@ -149,7 +156,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
+   '(projectile project-root ccls company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
 
  (setq max-specpdl-size 13000)
  (setq max-lisp-eval-depth 13000)
