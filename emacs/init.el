@@ -50,7 +50,12 @@
 (add-hook 'project-find-functions #'project-find-go-module)
 
 ;; Company mode
-(setq company-idle-delay 0)
+(require 'company)
+(require 'company-go) 
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)                          ; remove annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 (setq company-minimum-prefix-length 1)
 (add-hook 'go-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends) '(company-go))
@@ -58,7 +63,6 @@
 ;;;; GO Mode END
 
 ;; Optional: load other packages before eglot to enable eglot integrations.
-(require 'company)
 (require 'yasnippet)
 (require 'eglot)
 (add-hook 'go-mode-hook 'eglot-ensure)
@@ -83,7 +87,7 @@
 ; end of eglot
 
 ;;;; RUST
-
+(require 'rust-mode)
 ; Set path to racer binary
 (setq racer-cmd "~/.cargo/bin/racer")
 
