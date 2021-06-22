@@ -14,7 +14,6 @@
 (setq-default tab-width 4)
 (defvaralias 'c-basic-offset 'tab-width)
 
-
 ;(when (version<= "26.0.50" emacs-version )
 ;   (global-display-line-numbers-mode))
 (global-linum-mode 1)
@@ -73,11 +72,6 @@
 (defun eglot-format-buffer-on-save ()
   (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
 (add-hook 'go-mode-hook #'eglot-format-buffer-on-save)
-
-(setq-default eglot-workspace-configuration
-    '((:gopls .
-        ((staticcheck . t)
-         (matcher . "CaseSensitive")))))
 
 (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
 (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
@@ -160,7 +154,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(projectile project-root ccls company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
+   '(helm-gtags company-racer racer project-root company company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
 
  (setq max-specpdl-size 13000)
  (setq max-lisp-eval-depth 13000)
@@ -168,6 +162,28 @@
 ;;;; Debug
 ;(setq debug-on-error t)    ; now you should get a backtrace
 
+;;; editor looking
+;(set-cursor-color "red")
+(set-cursor-color "#ffffff")
+(setq-default cursor-type 'bar)
+(setq highlight-symbol-at-point t)
+(setq default-frame-alist '((cursor-color ."red")))
+
+;;; Enable helm-gtags-mode
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'rust-mode-hook 'helm-gtags-mode)
+(add-hook 'go-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+;; key bindings
+(with-eval-after-load 'helm-gtags
+  (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
+  (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
+  (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
+  (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
+  (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+  (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history))
+    ;(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
