@@ -12,7 +12,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(helm-gtags company-racer racer project-root company company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
+   '(use-package helm-gtags company-racer racer project-root company company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
 
  (setq max-specpdl-size 13000)
  (setq max-lisp-eval-depth 13000)
