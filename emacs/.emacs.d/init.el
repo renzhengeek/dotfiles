@@ -5,6 +5,18 @@
 ;; Initialize packages
 (package-initialize)
 
+;;;; Custom variables setting
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(helm-gtags company-racer racer project-root company company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
+
+ (setq max-specpdl-size 13000)
+ (setq max-lisp-eval-depth 13000)
+
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
@@ -145,19 +157,6 @@
   "Kill all other buffers."
   (interactive)
   (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
-
-
-;;;; Variables setting
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(helm-gtags company-racer racer project-root company company-go eglot yasnippet rust-mode go-mode flycheck-rust exec-path-from-shell)))
-
- (setq max-specpdl-size 13000)
- (setq max-lisp-eval-depth 13000)
 
 ;;;; Debug
 ;(setq debug-on-error t)    ; now you should get a backtrace
