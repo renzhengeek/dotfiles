@@ -5,14 +5,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
+ '(cua-remap-control-v nil)
  '(frame-resize-pixelwise t)
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-path-style 'relative)
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
  '(package-archives
    '(("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
      ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")))
  '(package-selected-packages
-   '(helm-gtaggs helm-gtags company-lsp lsp-treemacs treemacs dashboard quickrun yasnippet company helm use-package async))
+   '(whole-line-or-region helm-gtaggs helm-gtags company-lsp lsp-treemacs treemacs dashboard quickrun yasnippet company helm use-package async))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))

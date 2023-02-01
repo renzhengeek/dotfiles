@@ -304,3 +304,7 @@
 (defun my-c-mode-hook()
   (setq c-basic-offset 4))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
+
+;; keymap
+(global-set-key (kbd "C-v") 'scroll-up-command)
+(global-set-key (kbd "M-v") 'scroll-down-command)
