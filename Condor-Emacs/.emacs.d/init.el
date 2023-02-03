@@ -13,10 +13,10 @@
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
  '(package-archives
-   '(("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
-     ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")))
+   '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(whole-line-or-region helm-gtaggs helm-gtags company-lsp lsp-treemacs treemacs dashboard quickrun yasnippet company helm use-package async))
+   '(helm-lsp taxy-magit-section magit zzz-to-char whole-line-or-region helm-gtaggs helm-gtags company-lsp lsp-treemacs treemacs dashboard quickrun yasnippet company helm use-package async))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))

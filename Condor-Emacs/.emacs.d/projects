@@ -1,3 +1,4 @@
 ;;; -*- lisp-data -*-
-(("~/libvirt-kvm/")
- ("~/libvirt-test/"))
+(("~/qemu-kvm/")
+ ("~/libvirt-test/")
+ ("~/libvirt-kvm/"))
